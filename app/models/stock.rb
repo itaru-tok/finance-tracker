@@ -6,6 +6,10 @@ class Stock < ApplicationRecord
   secret_token: 'sk_e3ef0cfbb84e41de838ce29b687f1465',
   endpoint: 'https://cloud.iexapis.com/v1')
 
-  client.price(ticker_symbol)
+    begin
+      new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.quote(ticker_symbol).latest_price )
+    rescue => exception
+      return nil
+    end
   end
 end
