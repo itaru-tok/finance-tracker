@@ -6,4 +6,5 @@ rails db:migrate
 rails g migration add_first_last_name_to_users
 rails db:migrate
 rails g model Friendship user:references
- rails db:migrate
+rails db:migrate
+rails g controller friendships create destroy
